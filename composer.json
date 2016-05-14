@@ -1,0 +1,34 @@
+{
+    "name": "arachne/csrf",
+    "description": "Integration of symfony/security-csrf to nette/di.",
+    "type": "library",
+    "keywords": [ "nette", "arachne", "symfony" ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jáchym Toušek",
+            "homepage": "http://enumag.cz",
+            "email": "enumag@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "nette/di": "^2.3.0",
+		"nette/http": "^2.3.0",
+        "symfony/security-csrf": "^2.8.0|^3.0.0"
+    },
+    "require-dev": {
+        "arachne/bootstrap": "~0.2.1",
+        "codeception/codeception": "~2.2.0@rc"
+    },
+    "autoload": {
+        "psr-4": {
+            "Arachne\\Csrf\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Integration\\": "tests/integration/src"
+        }
+    }
+}
