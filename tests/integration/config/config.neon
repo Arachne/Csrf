@@ -1,0 +1,4 @@
+extensions:
+    arachne.csrf: Arachne\Csrf\DI\CsrfExtension
+    nette.http: Nette\Bridges\HttpDI\HttpExtension
+    nette.session: Nette\Bridges\HttpDI\SessionExtension
