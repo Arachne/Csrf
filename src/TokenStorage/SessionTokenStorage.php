@@ -30,11 +30,6 @@ class SessionTokenStorage implements TokenStorageInterface
      */
     private $session;
 
-    /**
-     * @var string
-     */
-    private $namespace;
-
     public function __construct(Session $session, $namespace = self::SESSION_NAMESPACE)
     {
         $this->session = $session->getSection($namespace);
