@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Arachne
  *
  * Copyright (c) Jáchym Toušek (enumag@gmail.com)
@@ -70,6 +70,7 @@ class SessionTokenStorage implements TokenStorageInterface
     {
         $token = isset($this->session[$tokenId]) ? (string) $this->session[$tokenId] : null;
         unset($this->session[$tokenId]);
+
         return $token;
     }
 }
