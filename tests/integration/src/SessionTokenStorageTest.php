@@ -2,7 +2,6 @@
 
 namespace Tests\Integration;
 
-use Arachne\Bootstrap\Configurator;
 use Arachne\Csrf\TokenStorage\SessionTokenStorage;
 use Codeception\Test\Unit;
 use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
@@ -19,9 +18,7 @@ class SessionTokenStorageTest extends Unit
 
     public function _before()
     {
-        $container = $this->createContainer('config.neon');
-
-        $this->storage = $container->getByType(TokenStorageInterface::class);
+        $this->storage = $this->tester->grabService(TokenStorageInterface::class);
     }
 
     public function testMethods()
@@ -43,14 +40,5 @@ class SessionTokenStorageTest extends Unit
     public function testException()
     {
         $this->storage->getToken('tokenId');
-    }
-
-    private function createContainer($file)
-    {
-        $config = new Configurator();
-        $config->setTempDirectory(TEMP_DIR);
-        $config->addConfig(__DIR__.'/../config/'.$file);
-
-        return $config->createContainer();
     }
 }

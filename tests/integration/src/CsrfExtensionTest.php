@@ -2,7 +2,6 @@
 
 namespace Tests\Integration;
 
-use Arachne\Bootstrap\Configurator;
 use Arachne\Csrf\TokenStorage\SessionTokenStorage;
 use Codeception\Test\Unit;
 use Symfony\Component\Security\Csrf\CsrfTokenManager;
@@ -18,19 +17,8 @@ class CsrfExtensionTest extends Unit
 {
     public function testExtension()
     {
-        $container = $this->createContainer('config.neon');
-
-        $this->assertInstanceOf(CsrfTokenManager::class, $container->getByType(CsrfTokenManagerInterface::class));
-        $this->assertInstanceOf(UriSafeTokenGenerator::class, $container->getByType(TokenGeneratorInterface::class));
-        $this->assertInstanceOf(SessionTokenStorage::class, $container->getByType(TokenStorageInterface::class));
-    }
-
-    private function createContainer($file)
-    {
-        $config = new Configurator();
-        $config->setTempDirectory(TEMP_DIR);
-        $config->addConfig(__DIR__.'/../config/'.$file);
-
-        return $config->createContainer();
+        $this->assertInstanceOf(CsrfTokenManager::class, $this->tester->grabService(CsrfTokenManagerInterface::class));
+        $this->assertInstanceOf(UriSafeTokenGenerator::class, $this->tester->grabService(TokenGeneratorInterface::class));
+        $this->assertInstanceOf(SessionTokenStorage::class, $this->tester->grabService(TokenStorageInterface::class));
     }
 }
