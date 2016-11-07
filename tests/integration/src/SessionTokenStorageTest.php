@@ -34,7 +34,7 @@ class SessionTokenStorageTest extends Unit
     }
 
     /**
-     * @expectedException Symfony\Component\Security\Csrf\Exception\TokenNotFoundException
+     * @expectedException \Symfony\Component\Security\Csrf\Exception\TokenNotFoundException
      * @expectedExceptionMessage The CSRF token with ID 'tokenId' does not exist.
      */
     public function testException()
