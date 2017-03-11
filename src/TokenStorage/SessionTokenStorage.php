@@ -36,7 +36,7 @@ class SessionTokenStorage implements TokenStorageInterface
             throw new TokenNotFoundException(sprintf('The CSRF token with ID "%s" does not exist.', $tokenId));
         }
 
-        return (string) $this->session[$tokenId];
+        return $this->session[$tokenId];
     }
 
     /**
@@ -44,7 +44,7 @@ class SessionTokenStorage implements TokenStorageInterface
      */
     public function setToken($tokenId, $token)
     {
-        $this->session[$tokenId] = (string) $token;
+        $this->session[$tokenId] = $token;
     }
 
     /**
@@ -60,7 +60,7 @@ class SessionTokenStorage implements TokenStorageInterface
      */
     public function removeToken($tokenId)
     {
-        $token = isset($this->session[$tokenId]) ? (string) $this->session[$tokenId] : null;
+        $token = isset($this->session[$tokenId]) ? $this->session[$tokenId] : null;
         unset($this->session[$tokenId]);
 
         return $token;
