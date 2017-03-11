@@ -33,7 +33,7 @@ class SessionTokenStorage implements TokenStorageInterface
     public function getToken($tokenId)
     {
         if (!isset($this->session[$tokenId])) {
-            throw new TokenNotFoundException("The CSRF token with ID '$tokenId' does not exist.");
+            throw new TokenNotFoundException(sprintf('The CSRF token with ID "%s" does not exist.', $tokenId));
         }
 
         return (string) $this->session[$tokenId];

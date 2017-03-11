@@ -5,6 +5,7 @@ namespace Tests\Integration;
 use Arachne\Codeception\Module\NetteDIModule;
 use Arachne\Csrf\TokenStorage\SessionTokenStorage;
 use Codeception\Test\Unit;
+use Symfony\Component\Security\Csrf\Exception\TokenNotFoundException;
 use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 
 /**
@@ -39,12 +40,13 @@ class SessionTokenStorageTest extends Unit
         $this->assertNull($this->storage->removeToken('tokenId'));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Security\Csrf\Exception\TokenNotFoundException
-     * @expectedExceptionMessage The CSRF token with ID 'tokenId' does not exist.
-     */
     public function testException()
     {
-        $this->storage->getToken('tokenId');
+        try {
+            $this->storage->getToken('tokenId');
+            $this->fail();
+        } catch (TokenNotFoundException $e) {
+            self::assertSame('The CSRF token with ID "tokenId" does not exist.', $e->getMessage());
+        }
     }
 }
