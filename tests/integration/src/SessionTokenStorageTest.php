@@ -2,6 +2,7 @@
 
 namespace Tests\Integration;
 
+use Arachne\Codeception\Module\NetteDIModule;
 use Arachne\Csrf\TokenStorage\SessionTokenStorage;
 use Codeception\Test\Unit;
 use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
@@ -11,6 +12,11 @@ use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
  */
 class SessionTokenStorageTest extends Unit
 {
+    /**
+     * @var NetteDIModule
+     */
+    protected $tester;
+
     /**
      * @var SessionTokenStorage
      */
