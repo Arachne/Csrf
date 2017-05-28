@@ -17,5 +17,5 @@ Installation
 The best way to install Arachne/Csrf is using [Composer](http://getcomposer.org/).
 
 ```sh
-$ composer require arachne/csrf
+composer require arachne/csrf
 ```
