@@ -12,14 +12,17 @@
         }
     ],
     "require": {
-        "php": "^5.5.0|^7.0.0",
-        "nette/di": "^2.3.0",
-        "nette/http": "^2.3.0",
-        "symfony/security-csrf": "^2.8.0|^3.0.0"
+        "php": "^7.1.0",
+        "nette/di": "^2.4.0",
+        "nette/http": "^2.4.0",
+        "symfony/security-csrf": "^3.0.0"
     },
     "require-dev": {
         "arachne/codeception": "^0.7.3",
-        "codeception/codeception": "^2.3.2"
+        "codeception/codeception": "^2.3.2",
+        "friendsofphp/php-cs-fixer": "^2.7.0@dev",
+        "phpstan/phpstan": "^0.8.5",
+        "phpstan/phpstan-nette": "^0.8.3"
     },
     "autoload": {
         "psr-4": {
@@ -35,14 +38,13 @@
         ]
     },
     "scripts": {
-        "tools": "sh composer-tools.sh",
         "ci": [
             "@fix",
             "@analyse",
             "@test"
         ],
-        "fix": "\"vendor-tools/bin/php-cs-fixer\" fix",
-        "analyse": "\"vendor-tools/bin/phpstan\" analyse --no-progress --level=7 --configuration=phpstan.neon src tests",
+        "fix": "\"vendor/bin/php-cs-fixer\" fix",
+        "analyse": "\"vendor/bin/phpstan\" analyse --no-progress --level=max --configuration=phpstan.neon src tests",
         "test": [
             "\"vendor/bin/codecept\" build",
             "\"vendor/bin/codecept\" run --debug"
@@ -50,7 +52,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }
