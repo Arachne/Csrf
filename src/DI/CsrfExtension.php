@@ -20,15 +20,15 @@ class CsrfExtension extends CompilerExtension
         $builder = $this->getContainerBuilder();
 
         $builder->addDefinition($this->prefix('tokenManager'))
-            ->setClass(CsrfTokenManagerInterface::class)
+            ->setType(CsrfTokenManagerInterface::class)
             ->setFactory(CsrfTokenManager::class);
 
         $builder->addDefinition($this->prefix('tokenGenerator'))
-            ->setClass(TokenGeneratorInterface::class)
+            ->setType(TokenGeneratorInterface::class)
             ->setFactory(UriSafeTokenGenerator::class);
 
         $builder->addDefinition($this->prefix('tokenStorage'))
-            ->setClass(TokenStorageInterface::class)
+            ->setType(TokenStorageInterface::class)
             ->setFactory(SessionTokenStorage::class);
     }
 }

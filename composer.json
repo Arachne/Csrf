@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": "^7.1.0",
-        "nette/di": "^2.4.0",
+        "nette/di": "^2.4.10",
         "nette/http": "^2.4.0",
         "symfony/security-csrf": "^3.0.0"
     },
