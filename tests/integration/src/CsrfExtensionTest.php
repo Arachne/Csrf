@@ -21,7 +21,7 @@ class CsrfExtensionTest extends Unit
      */
     protected $tester;
 
-    public function testExtension()
+    public function testExtension(): void
     {
         $this->assertInstanceOf(CsrfTokenManager::class, $this->tester->grabService(CsrfTokenManagerInterface::class));
         $this->assertInstanceOf(UriSafeTokenGenerator::class, $this->tester->grabService(TokenGeneratorInterface::class));

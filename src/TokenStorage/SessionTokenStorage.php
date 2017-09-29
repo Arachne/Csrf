@@ -22,7 +22,7 @@ class SessionTokenStorage implements TokenStorageInterface
      */
     private $session;
 
-    public function __construct(Session $session, $namespace = self::SESSION_NAMESPACE)
+    public function __construct(Session $session, string $namespace = self::SESSION_NAMESPACE)
     {
         $this->session = $session->getSection($namespace);
     }
@@ -30,7 +30,7 @@ class SessionTokenStorage implements TokenStorageInterface
     /**
      * {@inheritdoc}
      */
-    public function getToken($tokenId)
+    public function getToken($tokenId): string
     {
         if (!isset($this->session[$tokenId])) {
             throw new TokenNotFoundException(sprintf('The CSRF token with ID "%s" does not exist.', $tokenId));
@@ -42,7 +42,7 @@ class SessionTokenStorage implements TokenStorageInterface
     /**
      * {@inheritdoc}
      */
-    public function setToken($tokenId, $token)
+    public function setToken($tokenId, $token): void
     {
         $this->session[$tokenId] = $token;
     }
@@ -50,7 +50,7 @@ class SessionTokenStorage implements TokenStorageInterface
     /**
      * {@inheritdoc}
      */
-    public function hasToken($tokenId)
+    public function hasToken($tokenId): bool
     {
         return isset($this->session[$tokenId]);
     }
@@ -58,7 +58,7 @@ class SessionTokenStorage implements TokenStorageInterface
     /**
      * {@inheritdoc}
      */
-    public function removeToken($tokenId)
+    public function removeToken($tokenId): ?string
     {
         $token = isset($this->session[$tokenId]) ? $this->session[$tokenId] : null;
         unset($this->session[$tokenId]);

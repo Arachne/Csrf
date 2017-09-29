@@ -15,7 +15,7 @@ use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
  */
 class CsrfExtension extends CompilerExtension
 {
-    public function loadConfiguration()
+    public function loadConfiguration(): void
     {
         $builder = $this->getContainerBuilder();
 

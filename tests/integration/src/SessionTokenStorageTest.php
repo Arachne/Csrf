@@ -23,12 +23,12 @@ class SessionTokenStorageTest extends Unit
      */
     private $storage;
 
-    public function _before()
+    public function _before(): void
     {
         $this->storage = $this->tester->grabService(TokenStorageInterface::class);
     }
 
-    public function testMethods()
+    public function testMethods(): void
     {
         $this->assertFalse($this->storage->hasToken('tokenId'));
         $this->storage->setToken('tokenId', 'tokenValue');
@@ -40,13 +40,13 @@ class SessionTokenStorageTest extends Unit
         $this->assertNull($this->storage->removeToken('tokenId'));
     }
 
-    public function testException()
+    public function testException(): void
     {
         try {
             $this->storage->getToken('tokenId');
             $this->fail();
-        } catch (TokenNotFoundException $e) {
-            self::assertSame('The CSRF token with ID "tokenId" does not exist.', $e->getMessage());
+        } catch (TokenNotFoundException $exception) {
+            self::assertSame('The CSRF token with ID "tokenId" does not exist.', $exception->getMessage());
         }
     }
 }
