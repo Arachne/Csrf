@@ -27,7 +27,10 @@ class SessionTokenStorageTest extends Unit
 
     public function _before(): void
     {
-        $this->storage = $this->tester->grabService(TokenStorageInterface::class);
+        /** @var SessionTokenStorage $storage */
+        $storage = $this->tester->grabService(TokenStorageInterface::class);
+        $this->assertInstanceOf(SessionTokenStorage::class, $storage);
+        $this->storage = $storage;
     }
 
     public function testMethods(): void
