@@ -15,7 +15,7 @@
         "php": "^7.1.0",
         "nette/di": "^2.4.10",
         "nette/http": "^2.4.0",
-        "symfony/security-csrf": "^3.0.0"
+        "symfony/security-csrf": "^3.0.0 || ^4.0.0"
     },
     "require-dev": {
         "arachne/codeception": "^0.8.0",
@@ -52,7 +52,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0-dev"
+            "dev-master": "0.3-dev"
         }
     }
 }
