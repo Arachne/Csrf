@@ -25,8 +25,8 @@ class CsrfExtensionTest extends Unit
 
     public function testExtension(): void
     {
-        $this->assertInstanceOf(CsrfTokenManager::class, $this->tester->grabService(CsrfTokenManagerInterface::class));
-        $this->assertInstanceOf(UriSafeTokenGenerator::class, $this->tester->grabService(TokenGeneratorInterface::class));
-        $this->assertInstanceOf(SessionTokenStorage::class, $this->tester->grabService(TokenStorageInterface::class));
+        self::assertInstanceOf(CsrfTokenManager::class, $this->tester->grabService(CsrfTokenManagerInterface::class));
+        self::assertInstanceOf(UriSafeTokenGenerator::class, $this->tester->grabService(TokenGeneratorInterface::class));
+        self::assertInstanceOf(SessionTokenStorage::class, $this->tester->grabService(TokenStorageInterface::class));
     }
 }

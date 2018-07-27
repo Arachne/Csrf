@@ -29,27 +29,27 @@ class SessionTokenStorageTest extends Unit
     {
         /** @var SessionTokenStorage $storage */
         $storage = $this->tester->grabService(TokenStorageInterface::class);
-        $this->assertInstanceOf(SessionTokenStorage::class, $storage);
+        self::assertInstanceOf(SessionTokenStorage::class, $storage);
         $this->storage = $storage;
     }
 
     public function testMethods(): void
     {
-        $this->assertFalse($this->storage->hasToken('tokenId'));
+        self::assertFalse($this->storage->hasToken('tokenId'));
         $this->storage->setToken('tokenId', 'tokenValue');
-        $this->assertTrue($this->storage->hasToken('tokenId'));
-        $this->assertSame('tokenValue', $this->storage->getToken('tokenId'));
-        $this->assertTrue($this->storage->hasToken('tokenId'));
-        $this->assertSame('tokenValue', $this->storage->removeToken('tokenId'));
-        $this->assertFalse($this->storage->hasToken('tokenId'));
-        $this->assertNull($this->storage->removeToken('tokenId'));
+        self::assertTrue($this->storage->hasToken('tokenId'));
+        self::assertSame('tokenValue', $this->storage->getToken('tokenId'));
+        self::assertTrue($this->storage->hasToken('tokenId'));
+        self::assertSame('tokenValue', $this->storage->removeToken('tokenId'));
+        self::assertFalse($this->storage->hasToken('tokenId'));
+        self::assertNull($this->storage->removeToken('tokenId'));
     }
 
     public function testException(): void
     {
         try {
             $this->storage->getToken('tokenId');
-            $this->fail();
+            self::fail();
         } catch (TokenNotFoundException $exception) {
             self::assertSame('The CSRF token with ID "tokenId" does not exist.', $exception->getMessage());
         }
